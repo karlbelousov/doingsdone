@@ -1,0 +1,31 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Header() {
+  return (
+    <header className="main-header">
+      <Link href="/">
+        <Image
+          src="/img/logo.png"
+          width={153}
+          height={42}
+          alt="Логитип Дела в порядке"
+        />
+      </Link>
+      <div className="main-header__side">
+        <Link
+          className="main-header__side-item button button--plus open-modal"
+          href="/create-task"
+        >
+          Добавить задачу
+        </Link>
+        <div className="main-header__side-item user-menu">
+          <div className="user-menu__data">
+            <p>Константин</p>
+            <a href="#">Выйти</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
