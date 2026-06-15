@@ -10,6 +10,7 @@ export default function Header() {
           width={153}
           height={42}
           alt="Логитип Дела в порядке"
+          loading="eager"
         />
       </Link>
       <div className="main-header__side">

@@ -1,12 +1,15 @@
-import { tasks } from "@/lib/placeholder-data";
-import Taskitem from "./TaskItem";
+import { fetchAllTasks } from "@/lib/data";
+import TaskItem from "./TaskItem";
+import { USER_ID } from "@/constants/userId";
 
-export default function TasksList() {
+export default async function TasksList() {
+  const allTasks = await fetchAllTasks(USER_ID);
+
   return (
     <table className="tasks">
       <tbody>
-        {tasks.map((task) => (
-          <Taskitem {...task} key={task.id} />
+        {allTasks.map((task) => (
+          <TaskItem key={task.id} {...task} />
         ))}
       </tbody>
     </table>

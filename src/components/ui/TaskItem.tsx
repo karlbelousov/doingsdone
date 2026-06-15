@@ -1,5 +1,6 @@
 import { Task } from "@/lib/definition";
 import checkCountHoursToTaskCompletion from "@/utils/checkCountHoursToTaskCompletion";
+import formatDateToString from "@/utils/formatDateToStrig";
 import clsx from "clsx";
 
 export default function Taskitem({ title, date_completion, is_done }: Task) {
@@ -24,7 +25,9 @@ export default function Taskitem({ title, date_completion, is_done }: Task) {
           <span className="checkbox__text">{title}</span>
         </label>
       </td>
-      {date_completion && <td className="task__date">{date_completion}</td>}
+      {date_completion && (
+        <td className="task__date">{formatDateToString(date_completion)}</td>
+      )}
     </tr>
   );
 }
