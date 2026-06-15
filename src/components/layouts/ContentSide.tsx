@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProjectsList from "../ui/ProjectList";
+import NavigationList from "../ui/NavigationList";
 import { Suspense } from "react";
 
 export default function ContentSide() {
@@ -8,7 +8,7 @@ export default function ContentSide() {
       <h2 className="content__side-heading">Проекты</h2>
       <nav className="main-navigation">
         <Suspense fallback={<div>Загрузка...</div>}>
-          <ProjectsList />
+          <NavigationList />
         </Suspense>
       </nav>
       <Link

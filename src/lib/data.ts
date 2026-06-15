@@ -17,11 +17,28 @@ export async function fetchProjects(user_id: number) {
   }
 }
 
-export async function fetchAllTasks(user_id: number) {
+export async function fetchAllTasks(userId: number) {
   try {
     const tasks = await sql<Task[]>`
         SELECT * FROM tasks
-        WHERE user_id=${user_id}
+        WHERE user_id=${userId}
+    `;
+
+    return tasks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch tasks data.");
+  }
+}
+
+export async function fetchTasksByProjectsId(
+  userId: number,
+  projectsId: number,
+) {
+  try {
+    const tasks = await sql<Task[]>`
+        SELECT * FROM tasks
+        WHERE user_id=${userId} AND project_id=${projectsId}
     `;
 
     return tasks;

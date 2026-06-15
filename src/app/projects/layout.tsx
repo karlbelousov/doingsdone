@@ -16,7 +16,9 @@ export default function ProjectLayout({
           <Header />
           <div className="content">
             <ContentSide />
-            <main className="content__main">{children}</main>
+            <main className="content__main">
+              {children}
+            </main>
           </div>
         </div>
       </div>
