@@ -13,7 +13,7 @@ export default function ContentSide() {
       </nav>
       <Link
         className="button button--transparent button--plus content__side-button"
-        href="/create-project"
+        href="/projects/create-project"
       >
         Добавить проект
       </Link>

@@ -3,7 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import ContentSide from "@/components/layouts/ContentSide";
 import { openSans } from "../fonts";
 
-export default function ProjectLayout({
+export default function ProjectsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

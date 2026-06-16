@@ -3,6 +3,7 @@ import { openSans } from "./fonts";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 
+
 export default function Home() {
   return (
     <body className={`body-background ${openSans.className}`}>
