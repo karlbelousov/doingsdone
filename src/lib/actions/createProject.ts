@@ -5,7 +5,7 @@ import postgres from "postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { USER_ID } from "@/constants/userId";
-import { Project } from "./definition";
+import { Project } from "../definition";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
@@ -43,7 +43,7 @@ export type CreateProjectFormState = {
   };
 };
 
-export async function createProject(
+export default async function createProject(
   prevState: CreateProjectFormState,
   formData: FormData,
 ) {

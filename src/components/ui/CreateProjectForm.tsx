@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { createProject, CreateProjectFormState } from "@/lib/actions";
+import createProject, { CreateProjectFormState } from "@/lib/actions/createProject";
 import clsx from "clsx";
 
 export default function CreateProjectForm() {

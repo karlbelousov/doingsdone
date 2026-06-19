@@ -16,7 +16,7 @@ export default function Header() {
       <div className="main-header__side">
         <Link
           className="main-header__side-item button button--plus open-modal"
-          href="/create-task"
+          href="/projects/create-task"
         >
           Добавить задачу
         </Link>
