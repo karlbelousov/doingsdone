@@ -22,6 +22,7 @@ export async function fetchAllTasks(userId: number) {
     const tasks = await sql<Task[]>`
         SELECT * FROM tasks
         WHERE user_id=${userId}
+        ORDER BY date_creation ASC
     `;
 
     return tasks;
@@ -39,6 +40,7 @@ export async function fetchTasksByProjectsId(
     const tasks = await sql<Task[]>`
         SELECT * FROM tasks
         WHERE user_id=${userId} AND project_id=${projectsId}
+        ORDER BY date_creation ASC
     `;
 
     return tasks;

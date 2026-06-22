@@ -15,7 +15,7 @@ export default async function TasksList({ projectId }: { projectId?: number }) {
     <table className="tasks">
       <tbody>
         {tasks.map((task) => (
-          <TaskItem key={task.id} {...task} />
+          <TaskItem key={task.id} task={task} projectId={projectId} />
         ))}
       </tbody>
     </table>
