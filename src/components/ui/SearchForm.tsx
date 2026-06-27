@@ -1,15 +1,44 @@
+"use client";
+
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function SearchForm() {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  function handleInputChange(term: string) {
+    setSearchQuery(term);
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    if (searchQuery) {
+      params.set("query", searchQuery);
+    } else {
+      params.delete("query");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }
+
   return (
     <form
       className="search-form"
-      action="index.php"
-      method="post"
       autoComplete="off"
+      onSubmit={handleFormSubmit}
     >
       <input
         className="search-form__input"
         type="text"
         placeholder="Поиск по задачам"
+        onChange={(e) => {
+          handleInputChange(e.target.value);
+        }}
+        value={searchQuery}
       />
       <button className="search-form__submit" type="submit">
         Искать

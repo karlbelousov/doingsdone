@@ -19,7 +19,7 @@ export default function NavigationItem({
     <li
       className={clsx(
         "main-navigation__list-item",
-        pathname === `/projects/${project.id}` &&
+        pathname.startsWith(`/projects/${project.id}`) &&
           "main-navigation__list-item--active",
       )}
     >

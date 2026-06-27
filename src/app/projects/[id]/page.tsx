@@ -5,11 +5,17 @@ import TasksControls from "@/components/ui/TasksControls";
 
 export default async function ProjectPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams?: Promise<{
+    query?: string;
+  }>;
 }) {
   const paramsPage = await params;
   const id = Number(paramsPage.id);
+  const searchAllParams = await searchParams;
+  const query = searchAllParams?.query || "";
 
   return (
     <>
@@ -17,7 +23,7 @@ export default async function ProjectPage({
       <SearchForm />
       <TasksControls />
       <Suspense fallback={<div>Загрузка...</div>}>
-        <TasksList projectId={id} />
+        <TasksList projectId={id} query={query} />
       </Suspense>
     </>
   );

@@ -6,16 +6,25 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Все задачи",
-}
+};
 
-export default function AllProjectsPage() {
+export default async function AllProjectsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{
+    query?: string;
+  }>;
+}) {
+  const searchAllParams = await searchParams;
+  const query = searchAllParams?.query || "";
+
   return (
     <>
       <h2 className="content__main-heading">Список задач</h2>
       <SearchForm />
       <TasksControls />
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <TasksList />
+      <Suspense key={query} fallback={<div>Загрузка...</div>}>
+        <TasksList query={query} />
       </Suspense>
     </>
   );

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ logoHref = "/" }: { logoHref?: string }) {
   return (
     <header className="main-header">
-      <Link href="/">
+      <Link href={logoHref}>
         <Image
           src="/img/logo.png"
           width={153}

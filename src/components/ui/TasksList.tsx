@@ -1,11 +1,14 @@
-import { fetchAllTasks, fetchTasksByProjectsId } from "@/lib/data";
+import getTasks from "@/utils/getTasks";
 import TaskItem from "./TaskItem";
-import { USER_ID } from "@/constants/userId";
 
-export default async function TasksList({ projectId }: { projectId?: number }) {
-  const tasks = projectId
-    ? await fetchTasksByProjectsId(USER_ID, projectId)
-    : await fetchAllTasks(USER_ID);
+export default async function TasksList({
+  projectId,
+  query,
+}: {
+  projectId?: number;
+  query?: string;
+}) {
+  const tasks = await getTasks(projectId, query);
 
   if (tasks.length === 0) {
     return <div>Задач нет</div>;

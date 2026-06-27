@@ -32,6 +32,45 @@ export async function fetchAllTasks(userId: number) {
   }
 }
 
+export async function fetchFilteredAllTasks(userId: number, query: string) {
+  try {
+    const tasks = await sql<Task[]>`
+        SELECT * FROM tasks
+        WHERE 
+          user_id=${userId} AND 
+          tasks.title ILIKE ${`%${query}%`}
+        ORDER BY date_creation ASC
+    `;
+
+    return tasks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch tasks data.");
+  }
+}
+
+export async function fetchFilteredTasksByProjectsId(
+  userId: number,
+  projectsId: number,
+  query: string,
+) {
+  try {
+    const tasks = await sql<Task[]>`
+        SELECT * FROM tasks
+        WHERE 
+          user_id=${userId} 
+          AND project_id=${projectsId}
+          AND tasks.title ILIKE ${`%${query}%`}
+        ORDER BY date_creation ASC
+    `;
+
+    return tasks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch tasks data.");
+  }
+}
+
 export async function fetchTasksByProjectsId(
   userId: number,
   projectsId: number,

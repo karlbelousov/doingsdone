@@ -13,7 +13,7 @@ export default function ProjectsLayout({
       <h1 className="visually-hidden">Дела в порядке</h1>
       <div className="page-wrapper">
         <div className="container">
-          <Header />
+          <Header logoHref="/projects" />
           <div className="content">
             <ContentSide />
             <main className="content__main">
