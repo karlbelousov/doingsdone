@@ -9,21 +9,21 @@ export default async function ProjectPage({
 }: {
   params: Promise<{ id: string }>;
   searchParams?: Promise<{
-    query?: string;
+    search?: string;
   }>;
 }) {
   const paramsPage = await params;
   const id = Number(paramsPage.id);
   const searchAllParams = await searchParams;
-  const query = searchAllParams?.query || "";
+  const search = searchAllParams?.search || "";
 
   return (
     <>
       <h2 className="content__main-heading">Список задач</h2>
       <SearchForm />
-      <TasksControls />
+      <TasksControls projectsId={id} />
       <Suspense fallback={<div>Загрузка...</div>}>
-        <TasksList projectId={id} query={query} />
+        <TasksList projectId={id} search={search} />
       </Suspense>
     </>
   );

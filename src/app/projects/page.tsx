@@ -12,19 +12,19 @@ export default async function AllProjectsPage({
   searchParams,
 }: {
   searchParams?: Promise<{
-    query?: string;
+    search?: string;
   }>;
 }) {
   const searchAllParams = await searchParams;
-  const query = searchAllParams?.query || "";
+  const search = searchAllParams?.search || "";
 
   return (
     <>
       <h2 className="content__main-heading">Список задач</h2>
       <SearchForm />
       <TasksControls />
-      <Suspense key={query} fallback={<div>Загрузка...</div>}>
-        <TasksList query={query} />
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <TasksList search={search} />
       </Suspense>
     </>
   );

@@ -11,18 +11,18 @@ export default function SearchForm() {
 
   const [searchQuery, setSearchQuery] = useState("");
   function handleInputChange(term: string) {
-    setSearchQuery(term);
+    setSearchQuery(term.trim());
   }
 
   function handleFormSubmit(e) {
     e.preventDefault();
     
-    if (searchQuery) {
-      params.set("query", searchQuery);
+    if (searchQuery.length > 0) {
+      params.set("search", searchQuery);
+      replace(`${pathname}?${params.toString()}`);
     } else {
-      params.delete("query");
+      params.delete("search");
     }
-    replace(`${pathname}?${params.toString()}`);
   }
 
   return (
